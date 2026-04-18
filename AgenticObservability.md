@@ -30,7 +30,7 @@
 8. [Limitations and Failure Modes](#8-limitations-and-failure-modes)
 9. [Evaluation Methodology](#9-evaluation-methodology)
 10. [Case Studies](#10-case-studies)
-11. [Build vs. Buy and the FAANG Pattern](#11-build-vs-buy-and-the-faang-pattern)
+11. [Build vs. Buy and the Pattern](#11-build-vs-buy-and-the-pattern)
 12. [Organizational Impact](#12-organizational-impact)
 13. [Counter-Arguments Addressed](#13-counter-arguments-addressed)
 14. [Predictions and Strategic Recommendations](#14-predictions-and-strategic-recommendations)
@@ -50,7 +50,7 @@ The entire document is organized around a five-stage progression. Each stage is 
 | 4 | Causation | Root cause inference, often LLM-assisted | RAG, causal graphs, agent frameworks |
 | 5 | Autonomy | Self-healing with guardrails | Policy engines, blast-radius controls |
 
-Most large organizations are between stages 2 and 3. FAANG-tier companies operate at stage 3, with production experiments at stage 4. Claims of stage 5 should be treated skeptically — typically, the autonomy is scoped to narrow, reversible operations such as pod restarts or traffic shedding.
+Most large organizations are between stages 2 and 3. A-tier companies operate at stage 3, with production experiments at stage 4. Claims of stage 5 should be treated skeptically — typically, the autonomy is scoped to narrow, reversible operations such as pod restarts or traffic shedding.
 
 ---
 
@@ -78,7 +78,7 @@ OpenTelemetry has crossed the adoption threshold where it is the defensible defa
 
 ## 3. Observability at Scale
 
-The single largest gap between mid-tier and FAANG-tier observability practice is the treatment of scale as a first-class engineering concern.
+The single largest gap between mid-tier and A-tier observability practice is the treatment of scale as a first-class engineering concern.
 
 ### 3.1 The Cost Reality
 
@@ -124,7 +124,7 @@ Modern backends separate compute and storage, tiering data by access pattern:
 - **Warm (1–14d):** Object storage with aggressive indexing — seconds to tens of seconds
 - **Cold (>14d):** S3 or equivalent with Parquet — minutes, often queried via SQL engines
 
-ClickHouse, Apache Arrow, and Parquet dominate new implementations. Grafana Mimir, Tempo, and Loki; Honeycomb; and most FAANG-internal systems converge on this pattern.
+ClickHouse, Apache Arrow, and Parquet dominate new implementations. Grafana Mimir, Tempo, and Loki; Honeycomb; and most A-internal systems converge on this pattern.
 
 ### 3.5 Pipeline Architecture
 
@@ -374,7 +374,7 @@ From Roy et al.'s reported examples: an agent investigating a service degradatio
 
 ---
 
-## 11. Build vs. Buy and the FAANG Pattern
+## 11. Build vs. Buy the Pattern
 
 ### 11.1 The Build vs. Buy Frontier
 
@@ -385,7 +385,7 @@ From Roy et al.'s reported examples: an agent investigating a service degradatio
 | 1000–10000 | Selective build (pipeline, core storage) | Differentiation matters |
 | >10000 | Build core, buy periphery | Vendor lock-in untenable |
 
-### 11.2 Why FAANG Builds In-House
+### 11.2 Why A Builds In-House
 
 Large organizations consistently build proprietary observability systems. Representative examples:
 
@@ -468,7 +468,7 @@ You do not — initially. You trust the agent on low-stakes operations, measure 
 Vendor lock-in at the instrumentation layer is economically untenable; OTel adoption is on a clear S-curve.
 
 **Prediction 2: Columnar storage will dominate new observability backends.**
-Row-oriented storage cannot support the ad-hoc query patterns agents generate. Honeycomb, ClickHouse-based systems, and internal FAANG platforms have already converged here.
+Row-oriented storage cannot support the ad-hoc query patterns agents generate. Honeycomb, ClickHouse-based systems, and internal A platforms have already converged here.
 
 **Prediction 3: Agentic copilots will reach mainstream adoption by 2026; autonomous remediation will remain niche through 2028.**
 The copilot pattern reduces MTTR substantially with bounded risk; autonomy requires solving tool hallucination and trust calibration, which are multi-year problems.
